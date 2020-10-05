@@ -1,0 +1,14 @@
+.team-card {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: 4px 4px 8px gray;
+  padding: 5px 10px;
+  margin: 10px 0;
+}
+
+.team-card p {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}

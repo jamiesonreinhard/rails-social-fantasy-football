@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+<h1><%=  current_user.name %>'s Teams</h1>
+<% else %>
+<h1>You're not signed in</h1>
+<% end %>
+
+<% @teams.each do |team| %>
+<div class="team-card">
+  <div class="team-card-details">
+    <p><%= team.hometown %> <%= team.name %></p>
+    <p>League: <%= team.league.name %></p>
+    <p>Owner: <%=  current_user.name %> </p>
+  </div>
+  <div class="team-card-links">
+    <%= link_to "Team Dashboard", team_path(team) %>
+    <%= link_to "League Home", league_path(team.league) %>
+  </div>
+</div>
+<% end %>
+
+<%= link_to "Create New Team", new_team_path %>
