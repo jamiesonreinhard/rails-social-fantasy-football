@@ -2,7 +2,8 @@
 
   <%= f.input :title %>
   <%= f.hidden_field :author, value: current_user.name %>
-  <%= f.input :content, as: :text %>
+  <%= f.label :content %>
+  <%= f.rich_text_area :content %>
   <%= f.input :league_id, collection: @leagues, label: League %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   
