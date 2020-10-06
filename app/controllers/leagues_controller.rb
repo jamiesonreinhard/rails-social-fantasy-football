@@ -1,4 +1,6 @@
 class LeaguesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
+
   def index
     @leagues = League.where(user: current_user)
     @allLeagues = League.all
