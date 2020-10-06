@@ -5,5 +5,5 @@
   <%= f.input :league_id, collection: @leagues, label: League %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   
-  <%= f.submit "Create team" %>
+  <%= f.submit "Create team", class: "btn btn-light" %>
 <% end %>
