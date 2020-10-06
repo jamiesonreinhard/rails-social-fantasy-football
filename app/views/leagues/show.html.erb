@@ -1,1 +1,15 @@
 <h1><%= @league.name %></h1>
+<% @league.posts.each do |post| %>
+<div class="post-preview-card">
+  <div class="post-preview-card-content">
+    <p><%= post.title %></p>
+    <p>Posted by: <%= post.author %></p>
+    <p><%= post.content %></p>
+  </div>
+  <div class="post-preview-card-links">
+    <%= link_to "Full post", post_path(post), class: "btn btn-light" %>
+  </div>
+</div>
+
+<% end %>
+<%= link_to "New Post", new_post_path, class: "btn btn-light mt-3" %>
