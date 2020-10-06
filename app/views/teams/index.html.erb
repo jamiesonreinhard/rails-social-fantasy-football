@@ -12,10 +12,10 @@
     <p>Owner: <%=  current_user.name %> </p>
   </div>
   <div class="team-card-links">
-    <%= link_to "Team Dashboard", team_path(team) %>
-    <%= link_to "League Home", league_path(team.league) %>
+    <%= link_to "Team Dashboard", team_path(team), class: "btn btn-light" %>
+    <%= link_to "League Home", league_path(team.league), class: "btn btn-outline-light" %>
   </div>
 </div>
 <% end %>
 
-<%= link_to "Create New Team", new_team_path %>
+<%= link_to "Create New Team", new_team_path, class: "btn btn-light mt-3" %>

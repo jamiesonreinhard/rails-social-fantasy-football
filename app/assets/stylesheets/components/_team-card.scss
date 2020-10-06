@@ -5,10 +5,17 @@
   box-shadow: 4px 4px 8px gray;
   padding: 5px 10px;
   margin: 10px 0;
+  background-color: black;
 }
 
 .team-card p {
   &:not(:last-child) {
     margin-bottom: 10px;
   }
+}
+
+.team-card-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
