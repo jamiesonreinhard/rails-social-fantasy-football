@@ -1,0 +1,21 @@
+.league-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.league-list-card {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: 4px 4px 8px gray;
+  padding: 5px 10px;
+  margin: 10px 0;
+  background-color: black;
+}
+
+.league-list-card-links {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
