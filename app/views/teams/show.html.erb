@@ -1,2 +1,8 @@
 <h1><%= @team.hometown %> <%= @team.name %></h1>
-<%= link_to "Back to My Teams", teams_path, class: "btn btn-outline-light mt-3" %>
+<div class="team-actions">
+
+  <%= link_to "See League", league_path(@team.league), class: "btn btn-light mt-3 mb-1" %>
+  <%= link_to "Back to My Teams", teams_path, class: "btn btn-outline-light mb-1" %>
+  <%= link_to "Team Settings", team_settings_path(@team), class: "btn btn-outline-light mb-1" %>
+  
+</div>

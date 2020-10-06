@@ -1,0 +1,9 @@
+<%= simple_form_for (@team) do |f| %>
+
+  <%= f.input :name %>
+  <%= f.input :hometown %>
+  <%= f.hidden_field :league_id, value: @team.league_id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  
+  <%= f.submit "Save changes" %>
+<% end %>
