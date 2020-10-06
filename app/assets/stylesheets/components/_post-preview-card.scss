@@ -1,0 +1,15 @@
+.post-preview-card {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: 4px 4px 8px gray;
+  padding: 5px 10px;
+  margin: 10px 0;
+  background-color: black;
+}
+
+.post-preview-card-links {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
