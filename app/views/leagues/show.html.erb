@@ -1,10 +1,10 @@
 <div class="league-heading mb-3">
   <h1><%= @league.name %></h1>
-  <h2>Recent Posts</h2>
 </div>
 
-<% @league.posts.sort_by(&:created_at).reverse.first(5).each do |post| %>
-<div class="post-preview-card">
+<% if @league.users.include?(current_user) %>
+  <% @league.posts.sort_by(&:created_at).reverse.first(5).each do |post| %>
+  <div class="post-preview-card">
   <div class="post-preview-card-content">
     <h3><%= post.title %></h3>
     <p>Posted by: <%= post.author %></p>
@@ -17,3 +17,7 @@
 
 <% end %>
 <%= link_to "New Post", new_post_path, class: "btn btn-light mt-3" %>
+<% else %>
+<h2>Sorry, <%= current_user.name %>. You don't have access to this league.</h2>
+<%= link_to "Back to Leagues", leagues_path, class: "btn btn-light mt-3" %>
+<% end %>
