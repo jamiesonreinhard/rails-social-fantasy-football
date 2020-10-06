@@ -2,9 +2,9 @@
   <div class="header">
   <h1>Welcome to Fantasy Football</h1>
   <% if user_signed_in? %>
-  <h5>What would you like to do, <%=  current_user.name %>?</h5>
+  <h5 class="mb-3">What would you like to do, <%=  current_user.name %>?</h5>
   <% else %>
-  <h1>You're not signed in</h1>
+  <h5 class="mb-3">You're not signed in</h5>
   <% end %>
 
 <%= link_to "My Teams", teams_path, class: "btn btn-outline-light" %>

@@ -1,1 +1,15 @@
-<h1>My Leagues</h1>
+<h1>All Leagues</h1>
+<ul class="league-list">
+  <% @allLeagues.each do |league| %>
+  <li>
+    <div class="league-list-card">
+      <div class="league-list-card-content">
+        <p><%= league.name %></p>
+      </div>
+      <div class="league-list-card-links">
+        <%= link_to "View League", league_path(league), class: "btn btn-light" %>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>

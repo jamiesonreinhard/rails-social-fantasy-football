@@ -1,4 +1,8 @@
-<h1><%= @league.name %></h1>
+<div class="league-heading mb-3">
+  <h1><%= @league.name %></h1>
+  <h2>Recent Posts</h2>
+</div>
+
 <% @league.posts.each do |post| %>
 <div class="post-preview-card">
   <div class="post-preview-card-content">
