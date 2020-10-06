@@ -1,0 +1,11 @@
+<h1>League Settings</h1>
+
+<div class="league-actions">
+  <%= link_to "Edit League Details", edit_league_path(@league), class: "btn btn-outline-light mb-1" %>
+  <%= link_to "🗑", league_path(@league),
+    method: :delete,
+    data: { confirm: 'Are you sure you want to delete your league?'},
+    class: "btn btn-outline-danger mb-1" 
+  %>
+  <%= link_to "Back to My League", league_path(@league), class: "btn btn-outline-light" %>
+</div>

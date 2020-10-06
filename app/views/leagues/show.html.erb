@@ -3,21 +3,29 @@
 </div>
 
 <% if @league.users.include?(current_user) %>
+  <h2>Recent posts</h2>
   <% @league.posts.sort_by(&:created_at).reverse.first(5).each do |post| %>
   <div class="post-preview-card">
   <div class="post-preview-card-content">
     <h3><%= post.title %></h3>
     <p>Posted by: <%= post.author %></p>
-    <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 200) %> <%= link_to "Full post...", post_path(post) %></p>
-  </div>
-  <div class="post-preview-card-links">
-    
+    <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 200) %>... <%= link_to "Full post >>", post_path(post) %></p>
   </div>
 </div>
-
+  
 <% end %>
-<%= link_to "New Post", new_post_path, class: "btn btn-light mt-3" %>
+<div class="league-actions">
+  <%= link_to "New Post", new_post_path, class: "btn btn-light mt-3 mb-1" %>
+
+</div>
+<% if current_user.id == @league.user_id %>
+    <%= link_to "League Settings", league_settings_path(@league), class: "btn btn-outline-light" %>
+<% end %>
 <% else %>
-<h2>Sorry, <%= current_user.name %>. You don't have access to this league.</h2>
-<%= link_to "Back to Leagues", leagues_path, class: "btn btn-light mt-3" %>
+<h2>Hi, <%= current_user.name %>. Please create a team to access league content.</h2>
+<hr class="horizontal-rule">
+<div class="league-show-links">
+  <%= link_to "Create a Team", new_team_path, class: "btn btn-light mb-1 mt-3" %>
+  <%= link_to "Back to Leagues", leagues_path, class: "btn btn-outline-light" %>
+</div>
 <% end %>
