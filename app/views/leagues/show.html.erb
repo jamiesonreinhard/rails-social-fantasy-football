@@ -8,10 +8,10 @@
   <div class="post-preview-card-content">
     <h3><%= post.title %></h3>
     <p>Posted by: <%= post.author %></p>
-    <p><%= post.content.truncate(200) %></p>
+    <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 200) %> <%= link_to "Full post...", post_path(post) %></p>
   </div>
   <div class="post-preview-card-links">
-    <%= link_to "Full post", post_path(post), class: "btn btn-light ml-3" %>
+    
   </div>
 </div>
 
