@@ -1,3 +1,4 @@
 <h1><%= @post.title %></h1>
 <h3>By: <%= @post.author %></h3>
 <p><%= @post.content %></p>
+<%= link_to "League Dashboard", league_path(@post.league), class: "btn btn-light" %>

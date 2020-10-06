@@ -3,15 +3,15 @@
   <h2>Recent Posts</h2>
 </div>
 
-<% @league.posts.each do |post| %>
+<% @league.posts.sort_by(&:created_at).reverse.first(5).each do |post| %>
 <div class="post-preview-card">
   <div class="post-preview-card-content">
-    <p><%= post.title %></p>
+    <h3><%= post.title %></h3>
     <p>Posted by: <%= post.author %></p>
-    <p><%= post.content %></p>
+    <p><%= post.content.truncate(200) %></p>
   </div>
   <div class="post-preview-card-links">
-    <%= link_to "Full post", post_path(post), class: "btn btn-light" %>
+    <%= link_to "Full post", post_path(post), class: "btn btn-light ml-3" %>
   </div>
 </div>
 
