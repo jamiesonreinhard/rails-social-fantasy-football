@@ -2,9 +2,30 @@
 <h3>By: <%= @post.author %></h3>
 <p><%= @post.content %></p>
 <hr class="horizontal-rule">
-<%= link_to "League Dashboard", league_path(@post.league), class: "btn btn-light mt-3 mb-1" %>
-<% if @post.user == current_user %>
+
+<%= simple_form_for [ @post, @comment ] do |f| %>
+
+  <%= f.input :content, class: "mb-1", label: 'Comment on this post' %>
+  <%= f.hidden_field :author, value: current_user.name %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  
+  <%= f.submit "Comment", class: "btn btn-light" %>
+<% end %>
+
+<% @post.comments.each do |comment| %>
+  <div class="comment-card">
+  <div class="comment-card-details">
+    <p><%= comment.content %></p>
+  </div>
+  <%= link_to "🗑", post_comment_path(id: comment.id, post_id: @post.id), method: :delete,
+    data: { confirm: 'Are you sure you want to delete this comment?'} %>
+  </div>
+<% end %>
+
 <div class="post-actions">
+<%= link_to "League Dashboard", league_path(@post.league), class: "btn btn-outline-light mt-3 mb-1" %>
+<% if @post.user == current_user %>
+
   <%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-outline-light mb-1" %>
   <%= link_to "Delete Post", post_path(@post), method: :delete,
     data: { confirm: 'Are you sure you want to delete this post?'},
