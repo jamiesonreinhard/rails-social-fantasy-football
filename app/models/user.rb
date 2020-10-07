@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :teams, dependent: :destroy
   has_many :posts
+  has_one_attached :avatar
+  include Gravtastic
+  gravtastic
 end
