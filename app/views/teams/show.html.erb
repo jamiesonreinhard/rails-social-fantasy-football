@@ -3,7 +3,7 @@
     <%= image_tag user_avatar(@team.user, 100), class: "avatar-bordered mb-1 mr-3" %>
   <div>
     <h1><%= @team.hometown %> <%= @team.name %></h1>
-    <h4><%= @team.league.name %></h4>
+    <h4><%= @team.league.name %> | <%= @team.user.name %></h4>
     <p><%= link_to "Team Settings >>", team_settings_path(@team) %></p>
   </div>
   </div>
