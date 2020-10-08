@@ -18,7 +18,10 @@
 
 
 <h2><%= @team.user.name %>'s Posts</h2>
-<% @posts.sort_by(&:created_at).reverse.each do |post| %>
+<% if @posts.count == 0 %>
+  <p><%= @team.user.name %> hasn't posted anything.</p>
+<% else %>
+  <% @posts.sort_by(&:created_at).reverse.each do |post| %>
 <div class="post-preview-card">
   <div class="post-preview-card-content">
     <h3><%= post.title %></h3>
@@ -27,4 +30,6 @@
   </div>
 </div>
 <% end %>
+<% end %>
+
 
