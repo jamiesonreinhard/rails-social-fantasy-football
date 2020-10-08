@@ -5,7 +5,7 @@
 <% if @league.users.include?(current_user) %>
 
   <div class="row">
-    <div class="col-lg-8 col-sm-12">
+    <div class="col-lg-6 col-sm-12">
       <h2 class="mb-3">Recent posts</h2>
       <% @league.posts.sort_by(&:created_at).reverse.first(5).each do |post| %>
       <div class="post-preview-card">
@@ -24,12 +24,12 @@
         <%= link_to "League Settings", league_settings_path(@league), class: "btn btn-outline-light" %>
       <% end %>
     </div>
-    <div class="col-lg-4 col-sm-12">
+    <div class="col-lg-6 col-sm-12 text-center">
       <h2 class="mb-3">Teams</h2>
       <div class="teams-grid">
         <% @league.teams.each do |team| %>
         <div class="team-avatar">
-          <%= image_tag user_avatar(team.user, 100), class: "avatar-bordered mb-1" %>
+          <%= image_tag user_avatar(team.user, 100), class: "avatar-bordered-md mb-1" %>
           <p><%= team.hometown %> <%= team.name %></p>
         </div>
       <% end %>
