@@ -18,14 +18,14 @@
 
 
 <h2><%= @team.user.name %>'s Posts</h2>
-<% if @posts.count == 0 %>
+<% if @team.user.posts.count == 0 %>
   <p><%= @team.user.name %> hasn't posted anything.</p>
 <% else %>
-  <% @posts.sort_by(&:created_at).reverse.each do |post| %>
+  <% @team.user.posts.sort_by(&:created_at).reverse.each do |post| %>
 <div class="post-preview-card">
   <div class="post-preview-card-content">
     <h3><%= post.title %></h3>
-    <p>Posted by: <%= post.author %></p>
+    <p>Posted by: <%= post.author %> | <%= post.created_at %></p>
     <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 200) %>... <%= link_to "Full post >>", post_path(post) %></p>
   </div>
 </div>
