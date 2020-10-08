@@ -5,6 +5,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @posts = Post.where(user: current_user)
   end
 
   def settings

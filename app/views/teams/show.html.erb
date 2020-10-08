@@ -1,5 +1,17 @@
 <h1><%= @team.hometown %> <%= @team.name %></h1>
+<h2>My Posts</h2>
+<% @posts.sort_by(&:created_at).reverse.each do |post| %>
+<div class="post-preview-card">
+  <div class="post-preview-card-content">
+    <h3><%= post.title %></h3>
+    <p>Posted by: <%= post.author %></p>
+    <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 200) %>... <%= link_to "Full post >>", post_path(post) %></p>
+  </div>
+</div>
+<% end %>
 <div class="team-actions">
+
+
 
   <%= link_to "See League", league_path(@team.league), class: "btn btn-light mt-3 mb-1" %>
   <%= link_to "Back to My Teams", teams_path, class: "btn btn-outline-light mb-1" %>
