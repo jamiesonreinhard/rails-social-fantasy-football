@@ -14,13 +14,15 @@
         <li class="nav-item active">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
-        <li class="nav-item mr-3">
+        <li class="nav-item">
           <%= link_to "Leagues", leagues_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item mr-3">
+          <%= link_to "My Teams", teams_path, class: "nav-link" %>
         </li>
          <li class="nav-item-user dropdown">
              <%= image_tag user_avatar(current_user, 40), class: "avatar-bordered-sm dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "My Teams", teams_path, class: "dropdown-item" %>
             <%= link_to "Account", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>

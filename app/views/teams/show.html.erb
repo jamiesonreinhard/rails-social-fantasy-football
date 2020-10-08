@@ -1,5 +1,23 @@
-<h1><%= @team.hometown %> <%= @team.name %></h1>
-<h2>My Posts</h2>
+<div class="team-header">
+  <div class="team-header-details">
+    <%= image_tag user_avatar(@team.user, 100), class: "avatar-bordered mb-1 mr-3" %>
+  <div>
+    <h1><%= @team.hometown %> <%= @team.name %></h1>
+    <h4><%= @team.league.name %></h4>
+    <p><%= link_to "Team Settings >>", team_settings_path(@team) %></p>
+  </div>
+  </div>
+  <div class="team-actions">
+
+  <%= link_to "See League", league_path(@team.league), class: "btn btn-light mt-3 mb-1" %>
+  <%= link_to "My Teams", teams_path, class: "btn btn-outline-light mb-1" %>
+  
+  
+</div>
+</div>
+
+
+<h2><%= @team.user.name %>'s Posts</h2>
 <% @posts.sort_by(&:created_at).reverse.each do |post| %>
 <div class="post-preview-card">
   <div class="post-preview-card-content">
@@ -9,12 +27,4 @@
   </div>
 </div>
 <% end %>
-<div class="team-actions">
 
-
-
-  <%= link_to "See League", league_path(@team.league), class: "btn btn-light mt-3 mb-1" %>
-  <%= link_to "Back to My Teams", teams_path, class: "btn btn-outline-light mb-1" %>
-  <%= link_to "Team Settings", team_settings_path(@team), class: "btn btn-outline-light mb-1" %>
-  
-</div>

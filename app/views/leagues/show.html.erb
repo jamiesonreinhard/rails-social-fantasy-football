@@ -1,5 +1,8 @@
 <div class="league-heading mb-5">
   <h1><%= @league.name %></h1>
+  <% if current_user.id == @league.user_id %>
+    <p><%= link_to "League Settings >>", league_settings_path(@league) %></p>
+  <% end %>
 </div>
 
 <% if @league.users.include?(current_user) %>
@@ -20,17 +23,15 @@
       <div class="league-actions">
         <%= link_to "New Post", new_post_path, class: "btn btn-light mt-3 mb-1" %>
       </div>
-      <% if current_user.id == @league.user_id %>
-        <%= link_to "League Settings", league_settings_path(@league), class: "btn btn-outline-light" %>
-      <% end %>
+      
     </div>
     <div class="col-lg-6 col-sm-12 text-center px-5">
       <h2 class="mb-3">Teams</h2>
       <div class="teams-grid">
         <% @league.teams.each do |team| %>
         <div class="team-avatar">
-          <%= image_tag user_avatar(team.user, 100), class: "avatar-bordered-md mb-1" %>
-          <p><%= team.hometown %> <%= team.name %></p>
+          <%= link_to image_tag(user_avatar(team.user, 100), class: "avatar-bordered-md"), team_path(team) %>
+          <p><%= link_to team.hometown + " " + team.name, team_path(team), class: "team-link" %></p>
         </div>
       <% end %>
       </div>
