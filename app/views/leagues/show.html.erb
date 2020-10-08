@@ -1,26 +1,41 @@
-<div class="league-heading mb-3">
+<div class="league-heading mb-5">
   <h1><%= @league.name %></h1>
 </div>
 
 <% if @league.users.include?(current_user) %>
-  <h2>Recent posts</h2>
-  <% @league.posts.sort_by(&:created_at).reverse.first(5).each do |post| %>
-  <div class="post-preview-card">
-  <div class="post-preview-card-content">
-    <h3><%= post.title %></h3>
-    <p>Posted by: <%= post.author %></p>
-    <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 200) %>... <%= link_to "Full post >>", post_path(post) %></p>
-  </div>
-</div>
-  
-<% end %>
-<div class="league-actions">
-  <%= link_to "New Post", new_post_path, class: "btn btn-light mt-3 mb-1" %>
 
-</div>
-<% if current_user.id == @league.user_id %>
-    <%= link_to "League Settings", league_settings_path(@league), class: "btn btn-outline-light" %>
-<% end %>
+  <div class="row">
+    <div class="col-lg-8 col-sm-12">
+      <h2 class="mb-3">Recent posts</h2>
+      <% @league.posts.sort_by(&:created_at).reverse.first(5).each do |post| %>
+      <div class="post-preview-card">
+        <div class="post-preview-card-content">
+          <h3><%= post.title %></h3>
+          <p>Posted by: <%= post.author %></p>
+          <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 200) %>... <%= link_to "Full post >>", post_path(post) %></p>
+        </div>
+      </div>
+      
+      <% end %>
+      <div class="league-actions">
+        <%= link_to "New Post", new_post_path, class: "btn btn-light mt-3 mb-1" %>
+      </div>
+      <% if current_user.id == @league.user_id %>
+        <%= link_to "League Settings", league_settings_path(@league), class: "btn btn-outline-light" %>
+      <% end %>
+    </div>
+    <div class="col-lg-4 col-sm-12">
+      <h2 class="mb-3">Teams</h2>
+      <div class="teams-grid">
+        <% @league.teams.each do |team| %>
+        <div class="team-avatar">
+          <%= image_tag user_avatar(team.user, 100), class: "avatar-bordered mb-1" %>
+          <p><%= team.hometown %> <%= team.name %></p>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
 <% else %>
 <h2>Hi, <%= current_user.name %>. Please create a team to access league content.</h2>
 <hr class="horizontal-rule">
