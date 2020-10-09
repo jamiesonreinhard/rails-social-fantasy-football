@@ -18,3 +18,10 @@ body {
   color: whitesmoke;
   font-family: 'Oswald', sans-serif;
 }
+
+@media screen and (max-width: 450px) {
+  body {
+    font-size: 62.5%;
+  }
+} 
+
