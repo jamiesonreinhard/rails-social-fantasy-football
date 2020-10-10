@@ -1,6 +1,6 @@
 <div class="team-header">
   <div class="team-header-details">
-    <%= image_tag user_avatar(@team.user, 100), class: "avatar-bordered mb-1 mr-3" %>
+    <%= cl_image_tag user_avatar(@team.user, 100), class: "avatar-bordered mb-1 mr-3" %>
   <div>
     <h1><%= @team.hometown %> <%= @team.name %></h1>
     <h4><%= @team.league.name %> | <%= @team.user.name %></h4>

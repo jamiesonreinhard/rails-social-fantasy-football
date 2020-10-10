@@ -36,7 +36,7 @@
       <div class="teams-grid">
         <% @league.teams.each do |team| %>
         <div class="team-avatar">
-          <%= link_to image_tag(user_avatar(team.user, 100), class: "avatar-bordered-md"), team_path(team) %>
+          <%= link_to cl_image_tag(user_avatar(team.user, 100), class: "avatar-bordered-md"), team_path(team) %>
           <p><%= link_to team.hometown + " " + team.name, team_path(team), class: "team-link" %></p>
         </div>
       <% end %>

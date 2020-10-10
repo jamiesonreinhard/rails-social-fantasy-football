@@ -7,8 +7,8 @@
     <div class="edit-avatar mb-3">
       <%= f.label :avatar %>
       <br>
-      <%= image_tag user_avatar(resource, 100), class: "avatar-bordered mr-3" %>
-      <%= f.file_field :avatar %>
+      <%= cl_image_tag(user_avatar(@user, size=40), class: "avatar-bordered mr-3") %>
+      <%= f.input :avatar, as: :file %>
     </div>
     
     <%= f.input :name,
