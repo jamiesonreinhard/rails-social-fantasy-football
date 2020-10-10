@@ -1,7 +1,9 @@
-<div class="league-heading mb-5">
+<div class="league-heading mb-3">
   <h1><%= @league.name %></h1>
+  <%= link_to "ESPN Fantasy Home >>", 'https://www.espn.com/fantasy/' %>
+  <br>
   <% if current_user.id == @league.user_id %>
-    <p><%= link_to "League Settings >>", league_settings_path(@league) %></p>
+    <%= link_to "League Settings >>", league_settings_path(@league) %>
   <% end %>
 </div>
 
