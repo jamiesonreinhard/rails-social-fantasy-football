@@ -3,6 +3,7 @@
   <%= f.input :name %>
   <%= f.input :hometown %>
   <%= f.input :league_id, collection: @leagues, label: League %>
+  <%= f.input :league_password %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   
   <%= f.submit "Create team", class: "btn btn-light" %>
