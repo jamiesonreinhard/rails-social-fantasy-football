@@ -5,10 +5,10 @@
 
   <div class="form-inputs">
     <div class="edit-avatar mb-3">
-      <%= f.label :avatar %>
+      <%= f.label :photo %>
       <br>
       <%= cl_image_tag(user_avatar(@user, size=40), class: "avatar-bordered mr-3") %>
-      <%= f.input :avatar, as: :file %>
+      <%= f.input :photo, as: :file %>
     </div>
     
     <%= f.input :name,

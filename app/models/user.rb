@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :teams, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :leagues, dependent: :destroy
-  has_one_attached :avatar
+  has_one_attached :photo
   include Gravtastic
   gravtastic
 end
