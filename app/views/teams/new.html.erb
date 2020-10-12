@@ -1,9 +1,10 @@
 <%= simple_form_for (@team) do |f| %>
 
-  <%= f.input :name %>
-  <%= f.input :hometown %>
-  <%= f.input :league_id, collection: @leagues, label: League %>
-  <%= f.input :league_password %>
+  <%= f.input :league_id, collection: @leagues, label: "League Name" %>
+  <%= f.input :hometown, label: "Team Hometown" %>
+  <%= f.input :name, label: "Team Name" %>
+  
+  <%= f.input :league_password, label: "League Password" %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   
   <%= f.submit "Create team", class: "btn btn-light" %>
