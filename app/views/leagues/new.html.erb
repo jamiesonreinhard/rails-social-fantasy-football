@@ -1,7 +1,7 @@
 <%= simple_form_for (@league) do |f| %>
 
   <%= f.input :name %>
-  <%= f.input :password %>
+  <%= f.input :passcode %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   
   <%= f.submit "Create League" %>
