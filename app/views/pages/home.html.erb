@@ -2,7 +2,6 @@
   <div class="header">
   <h1>Welcome to Fantasy Football</h1>
   <% if user_signed_in? %>
-  <h5>It's Week <%= FFNerd.current_week %>!</h5>
   <h5 class="mb-3">What would you like to do, <%=  current_user.name %>?</h5>
   <% else %>
   <h5 class="mb-3">You're not signed in</h5>
