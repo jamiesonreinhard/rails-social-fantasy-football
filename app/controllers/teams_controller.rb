@@ -18,11 +18,18 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    if @team.save
-      redirect_to team_path(@team)
+    league_id = @team.league_id
+    @league = League.find(league_id)
+    if @team.league_password == @league.password
+      if @team.save
+        redirect_to team_path(@team)
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to new_team_path
     end
+    
   end
 
   def edit
@@ -47,7 +54,7 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name, :hometown, :league_id, :user_id)
+    params.require(:team).permit(:name, :hometown, :league_id, :user_id, :league_password)
   end
 
 end
