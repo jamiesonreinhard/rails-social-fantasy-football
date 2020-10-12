@@ -20,7 +20,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     league_id = @team.league_id
     @league = League.find(league_id)
-    if @team.league_password == @league.password
+    if @team.league_password == @league.passcode
       if @team.save
         redirect_to team_path(@team)
       else
