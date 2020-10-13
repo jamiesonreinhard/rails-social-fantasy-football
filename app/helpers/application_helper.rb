@@ -3,7 +3,7 @@ module ApplicationHelper
     if user.photo.attached?
       user.photo.key
     else
-      current_user.gravatar_url
+      image_path 'icons8-user-male-80 (1).png', class: "football-icon"
     end
   end
 end
