@@ -4,7 +4,9 @@
   <div>
     <h1><%= @team.hometown %> <%= @team.name %></h1>
     <h4><%= @team.league.name %> | <%= @team.user.name %></h4>
+    <% if @team.user == current_user %>
     <p><%= link_to "Team Settings >>", team_settings_path(@team) %></p>
+    <% end %>
   </div>
   </div>
   <div class="team-actions">
@@ -16,8 +18,9 @@
 </div>
 </div>
 
-
-<h2><%= @team.user.name %>'s Posts</h2>
+<div class="row">
+  <div class="col-lg-6 col-sm-12">
+    <h2><%= @team.user.name %>'s Posts</h2>
 <% if @team.user.posts.count == 0 %>
   <p><%= @team.user.name %> hasn't posted anything.</p>
 <% else %>
@@ -31,5 +34,23 @@
 </div>
 <% end %>
 <% end %>
+<% if current_user == @team.user %>
+<%= link_to "New Post", new_post_path, class: "btn btn-light mt-3 mb-1" %>
+<% end %>
+  </div>
+
+  <div class="col-lg-6 col-sm-12">
+    <h2>In The News</h2>
+    <div class="news-grid">
+      <% @articles.each do |article| %>
+        <div class="news-card">
+          <p>From <%= article.name %></p>
+          <p><strong><%= link_to article.title.truncate(75), article.url %></strong></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 
 
