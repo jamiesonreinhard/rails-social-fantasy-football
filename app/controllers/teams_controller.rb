@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-    @articles = ApiArticleFetcher.execute.first(9)
+    @articles = ApiArticleFetcher.execute(params[:query]).first(6)
   end
 
   def settings
