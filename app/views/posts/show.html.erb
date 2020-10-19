@@ -1,6 +1,7 @@
 <h1><%= @post.title %></h1>
 <h3>By: <%= @post.author %></h3>
 <p><%= @post.content %></p>
+<small>Posted by <%= @post.author %> <%= time_ago_in_words(@post.created_at)%> ago</small>
 <hr class="horizontal-rule">
 
 <%= simple_form_for [ @post, @comment ] do |f| %>
@@ -17,7 +18,9 @@
   <div class="comment-card">
     <div class="comment-card-details">
       <p><%= comment.content %></p>
-      <p>Posted by <%= comment.author %> at <%= comment.created_at %></p>
+      <div>
+        <small><strong><%= comment.author %></strong> | <%= time_ago_in_words(comment.created_at) %> ago</small>
+      </div>
     </div>
     <% if comment.user_id == current_user.id %>
       <%= link_to "🗑", post_comment_path(id: comment.id, post_id: @post.id), method: :delete,

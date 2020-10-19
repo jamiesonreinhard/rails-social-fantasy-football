@@ -28,7 +28,8 @@
 <div class="post-preview-card">
   <div class="post-preview-card-content">
     <h3><%= post.title %></h3>
-    <p>Posted by: <%= post.author %> | <%= post.created_at %></p>
+    <small>Posted by <%= post.author %> <%= time_ago_in_words(post.created_at)%> ago</small>
+    <hr class="horizontal-rule">
     <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 200) %>... <%= link_to "Full post >>", post_path(post) %></p>
   </div>
 </div>
