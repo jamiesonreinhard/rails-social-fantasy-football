@@ -41,14 +41,7 @@
 
   <div class="col-lg-6 col-sm-12">
     <h2>In The News</h2>
-    <%= form_tag team_path(@team), method: :get, class: "mb-3" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control mb-1",
-        placeholder: "Search for players, teams..."
-      %>
-      <%= submit_tag "Search", class: "btn btn-light" %>
-    <% end %>
+    
     <div class="news-grid">
       <% @articles.each do |article| %>
         <div class="news-card">
