@@ -1,3 +1,14 @@
 .btn {
   min-width: 100px;
 }
+
+.comment-submit {
+  display: none;
+}
+
+@media screen and (max-width: 450px) {
+  .comment-submit {
+    display: block;
+  }
+} 
+
