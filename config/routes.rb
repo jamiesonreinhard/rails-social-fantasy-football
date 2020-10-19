@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get '/leagues/:id/settings', to: 'leagues#settings', as: 'league_settings'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :teams
-  resources :leagues
+  resources :leagues do
+    resources :posts
+  end
   resources :posts do
     resources :comments
   end

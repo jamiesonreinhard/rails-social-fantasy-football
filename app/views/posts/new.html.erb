@@ -1,11 +1,11 @@
-<%= simple_form_for (@post) do |f| %>
+<%= simple_form_for [ @league, @post ] do |f| %>
 
   <%= f.input :title %>
   <%= f.hidden_field :author, value: current_user.name %>
   <%= f.label :content %>
   <%= f.rich_text_area :content %>
   <br>
-  <%= f.input :league_id, collection: @leagues, label: League %>
+  <%= f.hidden_field :league_id, value: @league.id %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   
   <%= f.submit "Share", class: "btn btn-light" %>

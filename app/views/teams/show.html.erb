@@ -3,10 +3,14 @@
     <%= cl_image_tag user_avatar(@team.user, 100), class: "avatar-bordered mb-1 mr-3" %>
   <div>
     <h1><%= @team.hometown %> <%= @team.name %></h1>
-    <h4><%= @team.league.name %> | <%= @team.user.name %></h4>
-    <% if @team.user == current_user %>
-    <p><%= link_to "Team Settings >>", team_settings_path(@team) %></p>
-    <% end %>
+    <h4><%= @team.league.name %></h4>
+    <h3><%= @team.user.name %></h3>
+    <div class="d-flex flex-column">
+      <% if @team.user == current_user %>
+      <%= link_to "Team Settings >>", team_settings_path(@team) %>
+      <% end %>
+      <%= link_to "ESPN Fantasy Home >>", 'https://www.espn.com/fantasy/' %>
+    </div>
   </div>
   </div>
   <div class="team-actions">

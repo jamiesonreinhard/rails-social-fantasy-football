@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @league = League.find(params[:league_id])
     @leagues = League.all
     @post = Post.new
   end
