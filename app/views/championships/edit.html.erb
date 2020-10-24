@@ -1,3 +1,5 @@
+<%= render 'shared/league-nav' %>
+
 <%= simple_form_for @championship do |f| %>
   <% current_year = Date.today.year %>
   <%= f.input :year, label: "Championship Year", collection: 1990..current_year %>

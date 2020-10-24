@@ -7,7 +7,7 @@ class ChampionshipsController < ApplicationController
   def create
     @league = League.find(params[:league_id])
     @championship = Championship.new(championship_params)
-    if @championship.update(championship_params)
+    if @championship.save
       redirect_to league_history_path(@league)
     else
       render :new

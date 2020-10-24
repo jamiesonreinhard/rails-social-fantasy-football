@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :teams
   resources :leagues do
     resources :posts
-    resources :championships, only: [:new, :create, :update]
+    resources :championships, only: [:new, :create, :edit, :update]
   end
   resources :posts do
     resources :comments

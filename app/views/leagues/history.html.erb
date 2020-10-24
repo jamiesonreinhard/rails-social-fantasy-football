@@ -3,4 +3,20 @@
   <h1><%= @league.name %></h1>
 </div>
 <h2>League History</h2>
-<%= link_to "Crown a Champion", new_league_championship_path(@league) %>
+<% if @league.user_id == current_user.id %>
+  <%= link_to "Crown a Champion >>", new_league_championship_path(@league) %>
+<% end %>
+<div class="championship-grid">
+  <% @league.championships.sort_by(&:year).reverse.each do |championship| %>
+  <div class="championship-card">
+    
+    <div class="championship-card-details">
+      <div class="championship-card-year"><%= championship.year %></div>
+      <div><%= cl_image_tag user_avatar(championship.team.user, 100), class: "avatar-bordered-md mb-1 mr-3" %></div>
+      <div><i class="fas fa-trophy fa-3x"></i></div>
+      
+    </div>
+    <div><%= championship.team.hometown %> <%= championship.team.name %></div>
+  </div>
+<% end %>
+</div>
