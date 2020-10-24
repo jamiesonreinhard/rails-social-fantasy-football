@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @league = League.find(params[:league_id])
     @leagues = League.all
     @post = Post.new
+    @post_types = ['Power Rankings', 'Regular Post']
   end
 
   def create
@@ -24,6 +25,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @post_types = ['Power Rankings', 'Regular Post']
   end
 
   def update
@@ -45,7 +47,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :author, :content, :league_id, :user_id)
+    params.require(:post).permit(:title, :author, :content, :league_id, :user_id, :post_type)
   end
 
 end

@@ -1,0 +1,8 @@
+<%= simple_form_for @championship do |f| %>
+  <% current_year = Date.today.year %>
+  <%= f.input :year, label: "Championship Year", collection: 1990..current_year %>
+  <%= f.hidden_field :league_id, value: @league.id %>
+  <%= f.input :team_id, collection: @league.teams %>
+  
+  <%= f.submit "Share", class: "btn btn-light" %>
+<% end %>

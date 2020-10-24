@@ -1,0 +1,6 @@
+<%= render 'shared/league-nav' %>
+<div class="league-heading mb-3">
+  <h1><%= @league.name %></h1>
+</div>
+<h2>League History</h2>
+<%= link_to "Crown a Champion", new_league_championship_path(@league) %>
