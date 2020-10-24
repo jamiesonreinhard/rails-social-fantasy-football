@@ -1,0 +1,19 @@
+<%= render 'shared/league-nav' %>
+<div class="league-heading mb-3">
+  <h1><%= @league.name %></h1>
+</div>
+
+<h2 class="mb-3">Power Rankings</h2>
+
+<% @league.posts.sort_by(&:created_at).reverse.each do |post| %>
+  <% if post.post_type == "Power Rankings" %>
+    <div class="post-preview-card">
+        <div class="post-preview-card-content">
+          <h3><%= post.title %></h3>
+          <small>Posted by <%= post.author %> <%= time_ago_in_words(post.created_at)%> ago</small>
+          
+          <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 200) %>... <%= link_to "Full post >>", post_path(post) %></p>
+        </div>
+      </div>
+  <% end %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_152438) do
+ActiveRecord::Schema.define(version: 2020_10_24_155334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 2020_10_19_152438) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "championships", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "league_id", null: false
+    t.integer "year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["league_id"], name: "index_championships_on_league_id"
+    t.index ["team_id"], name: "index_championships_on_team_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.text "content"
@@ -74,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_152438) do
     t.bigint "league_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "post_type"
     t.index ["league_id"], name: "index_posts_on_league_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -120,6 +131,8 @@ ActiveRecord::Schema.define(version: 2020_10_19_152438) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "championships", "leagues"
+  add_foreign_key "championships", "teams"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "leagues", "users"

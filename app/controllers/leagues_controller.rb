@@ -10,6 +10,15 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
   end
 
+  def rankings
+    @league = League.find(params[:id])
+    @posts = @league.posts
+  end
+
+  def history
+    @league = League.find(params[:id])
+  end
+
   def settings
     @league = League.find(params[:id])
   end
