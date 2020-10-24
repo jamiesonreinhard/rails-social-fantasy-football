@@ -31,7 +31,7 @@
   <%= f.submit "Comment", class: "btn btn-light comment-submit" %>
 <% end %>
 
-<% @post.comments.sort_by(&:created_at).reverse.each do |comment| %>
+<% @post.comments.sort_by(&:created_at).each do |comment| %>
 <div class="comment-module">
   <%= cl_image_tag(user_avatar(@user, size=40), class: "avatar-bordered-sm mr-3") %>
   <div class="comment-card">
