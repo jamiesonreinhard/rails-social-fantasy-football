@@ -33,7 +33,7 @@
 
 <% @post.comments.sort_by(&:created_at).each do |comment| %>
 <div class="comment-module">
-  <%= cl_image_tag(user_avatar(@post.user, size=40), class: "avatar-bordered-sm mr-3") %>
+  <%= cl_image_tag(user_avatar(comment.user, size=40), class: "avatar-bordered-sm mr-3") %>
   <div class="comment-card">
     <div class="comment-card-details">
       <small><strong><%= comment.author %></strong> | <%= time_ago_in_words(comment.created_at) %> ago</small>
