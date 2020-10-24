@@ -9,7 +9,20 @@
 <div class="championship-grid">
   <% @league.championships.sort_by(&:year).reverse.each do |championship| %>
   <div class="championship-card">
-    
+    <div class="edit-delete-championship">
+      <% if @league.user_id == current_user.id %>
+        <div>
+          <%= link_to edit_league_championship_path(id: championship.id, league_id: @league.id) do %>
+          <i class="far fa-edit"></i>
+          <% end %>
+          <%= link_to league_championship_path(id: championship.id, league_id: @league.id),
+            method: :delete,
+            data: { confirm: 'Are you sure you want to delete this championship?'} do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     <div class="championship-card-details">
       <div class="championship-card-year"><%= championship.year %></div>
       <div><%= cl_image_tag user_avatar(championship.team.user, 100), class: "avatar-bordered-md mb-1 mr-3" %></div>

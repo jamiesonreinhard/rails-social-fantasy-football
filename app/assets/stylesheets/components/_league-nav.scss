@@ -11,4 +11,11 @@
 
 .league-nav-item {
   margin-right: 10px;
+  color: darkgray;
+  transition: 0.3s all;
+
+  &:hover {
+    color: whitesmoke;
+    text-decoration: none;
+  }
 }

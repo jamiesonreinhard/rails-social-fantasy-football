@@ -1,4 +1,5 @@
 .championship-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,4 +21,10 @@
 .championship-card-year {
   font-size: 40px;
   margin-right: 10px;
+}
+
+.edit-delete-championship {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }

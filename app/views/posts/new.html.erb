@@ -1,6 +1,9 @@
+<%= render 'shared/league-nav' %>
+<h2>Create a post</h2>
+
 <%= simple_form_for [ @league, @post ] do |f| %>
 
-  <%= f.input :post_type, label: "Post Type", as: :radio_buttons, collection: @post_types %>
+  <%= f.input :post_type, label: false, as: :radio_buttons, collection: @post_types %>
   <%= f.input :title %>
   <%= f.hidden_field :author, value: current_user.name %>
   <%= f.label :content %>

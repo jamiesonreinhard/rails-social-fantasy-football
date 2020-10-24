@@ -1,10 +1,12 @@
 <%= render 'shared/league-nav' %>
 
-<%= simple_form_for @championship do |f| %>
+<h2>Edit Championship</h2>
+
+<%= simple_form_for [@league, @championship] do |f| %>
   <% current_year = Date.today.year %>
   <%= f.input :year, label: "Championship Year", collection: 1990..current_year %>
   <%= f.hidden_field :league_id, value: @league.id %>
-  <%= f.input :team_id, collection: @league.teams %>
+  <%= f.input :team_id, label: "Team", collection: @league.teams %>
   
-  <%= f.submit "Share", class: "btn btn-light" %>
+  <%= f.submit "Crown Champion", class: "btn btn-light" %>
 <% end %>
