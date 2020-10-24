@@ -23,6 +23,10 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
   end
 
+  def commish
+    @league = League.find(params[:id])
+  end
+
   def new
     @league = League.new
   end

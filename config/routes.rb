@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/leagues/:id/settings', to: 'leagues#settings', as: 'league_settings'
   get '/leagues/:id/rankings', to: 'leagues#rankings', as: 'league_rankings'
   get '/leagues/:id/history', to: 'leagues#history', as: 'league_history'
+  get '/leagues/:id/commish', to: 'leagues#commish', as: 'league_commish'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :teams
   resources :leagues do
