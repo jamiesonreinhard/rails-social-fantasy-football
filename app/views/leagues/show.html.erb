@@ -3,37 +3,71 @@
   <h1><%= @league.name %></h1>
   <%= link_to "ESPN Fantasy Home >>", 'https://www.espn.com/fantasy/' %>
   <br>
-  <% if current_user.id == @league.user_id %>
-    <%= link_to "League Settings >>", league_settings_path(@league) %>
-  <% end %>
 </div>
 
 <% if @league.users.include?(current_user) %>
 
   <div class="row">
-    <div class="col-lg-7 col-sm-12 mb-3 pr-5">
-      <h2 class="mb-3">Recent posts</h2>
+    <div class="col-lg-4 col-sm-12 mb-3 pr-3">
+       <h2 class="mb-3 text-center">Recent Posts</h2>
       <% if @league.posts.count == 0 %>
       <p>There aren't any posts yet!</p>
       <% else %>
         <% @league.posts.sort_by(&:created_at).reverse.first(5).each do |post| %>
       <div class="post-preview-card">
         <div class="post-preview-card-content">
-          <h3><%= post.title %></h3>
+          <h5><%= post.title %></h5>
           <small>Posted by <%= post.author %> <%= time_ago_in_words(post.created_at)%> ago</small>
           
-          <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 200) %>... <%= link_to "Full post >>", post_path(post) %></p>
+          <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 50) %>... <%= link_to "Full post >>", post_path(post) %></p>
         </div>
       </div>
       <% end %>
       <% end %>
       
       <div class="league-actions">
-        <%= link_to "New Post", new_league_post_path(@league), class: "btn btn-light mt-3 mb-1" %>
+        <%= link_to "New Post", new_league_post_path(@league), class: "btn btn-light mt-2 mb-1" %>
+        <%= link_to "All Posts", new_league_post_path(@league), class: "btn btn-light mt-2 mb-1" %>
+      </div>
+
+      
+    </div>
+    <div class="col-lg-4 col-sm-12 mb-3 pr-3">
+      <h2 class="mb-3 text-center">League Info</h2>
+      <div class="league-info">
+        <div class="league-description">
+          <% if @league.description.empty? %>
+          <p>The league commissioner can update the league description in 
+            <% if current_user.id == @league.user_id %>
+            <%= link_to "league settings", edit_league_path(@league) %>
+            <% else %>
+            <span>league settings.</span>
+            <% end %>
+          </p>
+          <% else %>
+          <p><%= @league.description %></p>
+          <% end %>
+        </div>
+        <hr class="horizontal-rule">
+        <h3 class="text-center">Standings</h3>
+        <div class="league-standings">
+          <% if @league.content.empty? %>
+            <p>The league commissioner can update the league standings in 
+              <% if current_user.id == @league.user_id %>
+              <%= link_to "league settings", edit_league_path(@league) %>
+              <% else %>
+              <span>league settings.</span>
+              <% end %>
+            </p> 
+          <% else %> 
+          <%= @league.content %>
+          <% end %>
+        </div>
       </div>
       
     </div>
-    <div class="col-lg-5 col-sm-12 text-center px-5">
+    <div class="col-lg-4 col-sm-12 text-center px-5">
+        
       <h2 class="mb-3">Teams</h2>
       <div class="teams-grid">
         <% @league.teams.each do |team| %>

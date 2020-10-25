@@ -1,3 +1,6 @@
+<%= render 'shared/team-nav' %>
+
+<h1 class="mb-3"><%= @team.name %> Settings</h1>
 <%= simple_form_for (@team) do |f| %>
 
   <%= f.input :name %>

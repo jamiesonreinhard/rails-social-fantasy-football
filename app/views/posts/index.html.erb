@@ -1,0 +1,16 @@
+<%= render 'shared/league-nav' %>
+<h2 class="mb-3">All Posts in <%= @league.name %></h2>
+
+<% @league.posts.sort_by(&:created_at).reverse.each do |post| %>
+  <div class="post-preview-card">
+        <div class="post-preview-card-content">
+          <h5><%= post.title %></h5>
+          <small>Posted by <%= post.author %> <%= time_ago_in_words(post.created_at)%> ago</small>
+          
+          <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 50) %>... <%= link_to "Full post >>", post_path(post) %></p>
+        </div>
+      </div>
+<% end %>
+<div class="league-actions">
+  <%= link_to "New Post", new_league_post_path(@league), class: "btn btn-light mt-2 mb-1" %>
+</div>

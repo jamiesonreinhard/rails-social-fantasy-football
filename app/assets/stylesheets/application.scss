@@ -21,6 +21,7 @@ body {
 
 p, small {
   font-family: "Work Sans", "Helvetica", "sans-serif";
+  margin-bottom: 0;
 }
 
 small {
@@ -29,7 +30,7 @@ small {
 
 @media screen and (max-width: 450px) {
   body {
-    font-size: 62.5%;
+    font-size: 70%;
     background-color: transparent;
   }
 } 

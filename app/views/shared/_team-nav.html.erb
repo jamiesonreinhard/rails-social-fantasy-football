@@ -1,0 +1,7 @@
+<div class="team-nav">
+  <div class="team-nav-items">
+    <%= link_to "Dashboard", team_path(@team), class: "team-nav-item" %>
+    <%= link_to "My Teams", teams_path, class: "team-nav-item" %>
+    <%= link_to "League Dashboard", league_path(@team.league), class: "team-nav-item" %>
+  </div>
+</div>

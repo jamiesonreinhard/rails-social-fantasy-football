@@ -3,5 +3,8 @@
     <%= link_to "Dashboard", league_path(@league), class: "league-nav-item" %>
     <%= link_to "League History", league_history_path(@league), class: "league-nav-item" %>
     <%= link_to "Power Rankings", league_rankings_path(@league), class: "league-nav-item" %>
+    <% if current_user.id == @league.user_id %>
+      <%= link_to "League Settings", edit_league_path(@league), class: "league-nav-item" %>
+    <% end %>
   </div>
 </div>

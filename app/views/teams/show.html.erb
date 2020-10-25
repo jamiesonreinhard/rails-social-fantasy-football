@@ -1,25 +1,25 @@
+<%= render 'shared/team-nav' %>
+
 <div class="team-header">
   <div class="team-header-details">
     <%= cl_image_tag user_avatar(@team.user, 100), class: "avatar-bordered mb-1 mr-3" %>
-  <div>
-    <h1><%= @team.hometown %> <%= @team.name %></h1>
-    <h4><%= @team.league.name %></h4>
-    <h3><%= @team.user.name %></h3>
-    <div class="d-flex flex-column">
-      <% if @team.user == current_user %>
-      <%= link_to "Team Settings >>", team_settings_path(@team) %>
-      <% end %>
-      <%= link_to "ESPN Fantasy Home >>", 'https://www.espn.com/fantasy/' %>
+    <div>
+      <h1><%= @team.hometown %> <%= @team.name %></h1>
+      <h4><%= @team.league.name %></h4>
+      <h3><%= @team.user.name %></h3>
+      <div class="d-flex flex-column">
+        <% if @team.user == current_user %>
+        <%= link_to "Team Settings >>", team_settings_path(@team) %>
+        <% end %>
+        <%= link_to "ESPN Fantasy Home >>", 'https://www.espn.com/fantasy/' %>
+      </div>
     </div>
   </div>
+  <div class="team-trophies">
+  <% @team.championships.count.times do %>
+  <div><i class="fas fa-trophy fa-3x mr-2"></i></div>
+  <% end %>
   </div>
-  <div class="team-actions">
-
-  <%= link_to "See League", league_path(@team.league), class: "btn btn-light mt-3 mb-1" %>
-  <%= link_to "My Teams", teams_path, class: "btn btn-outline-light mb-1" %>
-  
-  
-</div>
 </div>
 
 <div class="row">
@@ -33,8 +33,7 @@
   <div class="post-preview-card-content">
     <h3><%= post.title %></h3>
     <small>Posted by <%= post.author %> <%= time_ago_in_words(post.created_at)%> ago</small>
-    <hr class="horizontal-rule">
-    <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 200) %>... <%= link_to "Full post >>", post_path(post) %></p>
+    <p><%= truncate(strip_tags(post.rich_text_content.to_s), length: 100) %>... <%= link_to "Full post >>", post_path(post) %></p>
   </div>
 </div>
 <% end %>

@@ -23,10 +23,6 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
   end
 
-  def commish
-    @league = League.find(params[:id])
-  end
-
   def new
     @league = League.new
   end
@@ -62,6 +58,6 @@ class LeaguesController < ApplicationController
   private
 
   def league_params
-    params.require(:league).permit(:name, :user_id, :passcode)
+    params.require(:league).permit(:name, :user_id, :passcode, :description, :content)
   end
 end

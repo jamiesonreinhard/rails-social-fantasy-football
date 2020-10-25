@@ -1,8 +1,22 @@
+<%= render 'shared/league-nav' %>
+<h2 class="mb-3"><%= @league.name %> Settings</h2>
+
+<% if current_user.id == @league.user_id %>
+
 <%= simple_form_for (@league) do |f| %>
 
   <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.label :content, label: "Current Standings" %>
+  <%= f.rich_text_area :content %>
   <%= f.input :passcode %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   
   <%= f.submit "Save Changes" %>
+<% end %>
+
+<% else %>
+
+Sorry, only the commissioner has access to this page.
+
 <% end %>
