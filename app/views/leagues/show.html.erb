@@ -36,7 +36,7 @@
       <h2 class="mb-3 text-center">League Info</h2>
       <div class="league-info">
         <div class="league-description">
-          <% if @league.description.empty? %>
+          <% if @league.description.nil? %>
           <p>The league commissioner can update the league description in 
             <% if current_user.id == @league.user_id %>
             <%= link_to "league settings", edit_league_path(@league) %>
@@ -51,7 +51,7 @@
         <hr class="horizontal-rule">
         <h3 class="text-center">Standings</h3>
         <div class="league-standings">
-          <% if @league.content.empty? %>
+          <% if @league.content.nil? %>
             <p>The league commissioner can update the league standings in 
               <% if current_user.id == @league.user_id %>
               <%= link_to "league settings", edit_league_path(@league) %>
