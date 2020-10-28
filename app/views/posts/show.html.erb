@@ -1,3 +1,15 @@
+<div class="league-nav">
+  <div class="league-nav-items">
+    <%= link_to "Dashboard", league_path(@post.league), class: "league-nav-item" %>
+    <%= link_to "League History", league_history_path(@post.league), class: "league-nav-item" %>
+    <%= link_to "Power Rankings", league_rankings_path(@post.league), class: "league-nav-item" %>
+    <% if current_user.id == @post.league.user_id %>
+      <%= link_to "League Settings", edit_league_path(@post.league), class: "league-nav-item" %>
+    <% end %>
+  </div>
+</div>
+
+
 <div class="mb-3">
 <div class="post-heading">
   <h1 class="mr-3"><%= @post.title %></h1>
