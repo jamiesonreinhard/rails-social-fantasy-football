@@ -25,11 +25,12 @@
     </div>
     <div class="championship-card-details">
       <div class="championship-card-year"><%= championship.year %></div>
-      <div><%= cl_image_tag user_avatar(championship.team.user, 100), class: "avatar-bordered-md mb-1 mr-3" %></div>
+      <div class="championship-card-user">
+        <%= cl_image_tag user_avatar(championship.team.user, 100), class: "avatar-bordered-md mb-1" %>
+        <div><%= championship.team.user.name %></div>
+      </div>
       <div><i class="fas fa-trophy fa-3x"></i></div>
-      
     </div>
-    <div><%= championship.team.hometown %> <%= championship.team.name %></div>
   </div>
 <% end %>
 </div>

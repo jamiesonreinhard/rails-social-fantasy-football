@@ -20,7 +20,13 @@
 
 .championship-card-year {
   font-size: 40px;
-  margin-right: 10px;
+}
+
+.championship-card-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
 }
 
 .edit-delete-championship {
