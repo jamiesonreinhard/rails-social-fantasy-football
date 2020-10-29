@@ -15,11 +15,12 @@
 .championship-card-details {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .championship-card-year {
   font-size: 40px;
+  margin-top: 20px;
 }
 
 .championship-card-user {
@@ -27,6 +28,10 @@
   flex-direction: column;
   align-items: center;
   margin: 0 20px;
+}
+
+.championship-card-trophy {
+  margin-top: 20px;
 }
 
 .edit-delete-championship {
