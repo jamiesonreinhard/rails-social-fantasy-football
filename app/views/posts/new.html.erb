@@ -6,6 +6,9 @@
   <%= f.input :post_type, label: false, as: :radio_buttons, collection: @post_types %>
   <%= f.input :title %>
   <%= f.hidden_field :author, value: current_user.name %>
+  <%= f.label :document, label: "PDF" %>
+  <%= f.file_field :document %>
+  <br>
   <%= f.label :content %>
   <%= f.rich_text_area :content %>
   <br>

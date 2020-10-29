@@ -3,4 +3,5 @@ class Post < ApplicationRecord
   belongs_to :league
   has_many :comments, dependent: :destroy
   has_rich_text :content
+  has_one_attached :document
 end

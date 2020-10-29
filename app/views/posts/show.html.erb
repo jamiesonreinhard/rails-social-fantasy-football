@@ -29,6 +29,9 @@
   
   <h3>By: <%= @post.author %></h3>
   <small>Posted by <%= @post.author %> <%= time_ago_in_words(@post.created_at)%> ago</small>
+  <% if @post.document.attached? %>
+  <p><%= link_to "See attached PDF", @post.document %></p>
+  <% end %>
   <p><%= @post.content %></p>
 </div>
 
