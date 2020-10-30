@@ -51,40 +51,36 @@
   
   <%= simple_form_for [ @post, @comment ] do |f| %>
 
-  
   <%= f.hidden_field :author, value: current_user.name %>
   <%= f.hidden_field :post_id, value: @post.id %>
   <%= f.hidden_field :user_id, value: @user.id %>
   <%= f.input :content, as: :string, rows: 1, class: "comment-input mb-1", placeholder: 'Write a comment...', label: false %>
-  <%= f.submit "Comment", class: "btn btn-light comment-submit" %>
-<% end %>
+  <%= f.submit "Comment", class: "btn btn-light comment-submit mb-3" %>
+  <% end %>
 
-
-
-
-<% @post.comments.sort_by(&:created_at).each do |comment| %>
-<div class="comment-module">
-  <%= cl_image_tag(user_avatar(comment.user, size=40), class: "avatar-bordered-sm mr-3") %>
-  <div class="comment-card">
-    <div class="comment-card-details">
-      <small><strong><%= comment.author %></strong> | <%= time_ago_in_words(comment.created_at) %> ago</small>
-      <p><%= comment.content %></p>
-    </div>
-    <div class="comment-likes">
-      <% if current_user.liked? comment %>
-        <%= link_to "Unlike", like_post_comment_path(post_id: @post.id, comment_id: comment.id, format: 'unlike'), method: :put, class: "btn btn-light mr-2" %>
-        <% else %>
-        <%= link_to "Like", like_post_comment_path(post_id: @post.id, comment_id: comment.id, format: 'like'), method: :put, class: "btn btn-light mr-2" %>
-      <% end %>
-      <div class="mr-3">
-        ♥️
-        <%= comment.get_likes.size %>
+  <% @post.comments.sort_by(&:created_at).each do |comment| %>
+  <div class="comment-module">
+    <%= cl_image_tag(user_avatar(comment.user, size=40), class: "avatar-bordered-sm mr-3") %>
+    <div class="comment-card">
+      <div class="comment-card-details">
+        <small><strong><%= comment.author %></strong> | <%= time_ago_in_words(comment.created_at) %> ago</small>
+        <p><%= comment.content %></p>
       </div>
-      <% if comment.user_id == current_user.id %>
-      <%= link_to "🗑", post_comment_path(id: comment.id, post_id: @post.id), method: :delete,
-        data: { confirm: 'Are you sure you want to delete this comment?'} %>
-    <% end %>
-    </div>
+      <div class="comment-likes">
+        <% if current_user.liked? comment %>
+          <%= link_to "Unlike", like_post_comment_path(post_id: @post.id, comment_id: comment.id, format: 'unlike'), method: :put, class: "btn btn-light mr-2" %>
+          <% else %>
+          <%= link_to "Like", like_post_comment_path(post_id: @post.id, comment_id: comment.id, format: 'like'), method: :put, class: "btn btn-light mr-2" %>
+        <% end %>
+        <div class="mr-3">
+          ♥️
+          <%= comment.get_likes.size %>
+        </div>
+        <% if comment.user_id == current_user.id %>
+        <%= link_to "🗑", post_comment_path(id: comment.id, post_id: @post.id), method: :delete,
+          data: { confirm: 'Are you sure you want to delete this comment?'} %>
+        <% end %>
+      </div>
     
   </div>
 </div>
