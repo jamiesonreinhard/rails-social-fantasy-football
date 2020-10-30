@@ -12,7 +12,14 @@ Rails.application.routes.draw do
     resources :championships
   end
   resources :posts do
-    resources :comments
+    resources :comments do
+      member do
+        put "like" => "comments#like"
+      end
+    end
+    member do
+      put "like" => "posts#like"
+    end
   end
   
 end

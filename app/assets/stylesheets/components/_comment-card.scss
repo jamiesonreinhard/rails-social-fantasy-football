@@ -3,6 +3,12 @@
   align-items: flex-start;
 }
 
+.like-and-comment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .comment-card {
   display: flex;
   justify-content: space-between;
@@ -14,4 +20,9 @@
   background-color: rgba(24, 29, 39, 0.8);
   border-radius: 5px;
   text-align: left;
+}
+
+.comment-likes {
+  display: flex;
+  align-items: center;
 }

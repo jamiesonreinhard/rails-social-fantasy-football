@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  respond_to :js, :html, :json
+
   def index
     @league = League.find(params[:league_id])
   end
@@ -9,6 +11,17 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comments = @post.comments
     @user = current_user
+  end
+
+  def like
+    @user = current_user
+    @post = Post.find(params[:id])
+    if params[:format] == 'like'
+      @post.liked_by @user
+    elsif params[:format] == 'unlike'
+      @post.unliked_by @user
+    end
+    redirect_to post_path(@post)
   end
 
   def new
