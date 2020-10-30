@@ -12,7 +12,7 @@
   <%= f.input :passcode %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   
-  <%= f.submit "Save Changes" %>
+  <%= f.submit "Save Changes", class: "btn btn-light" %>
 <% end %>
 
 <% else %>

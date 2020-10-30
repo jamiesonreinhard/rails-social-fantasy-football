@@ -33,7 +33,7 @@ class ChampionshipsController < ApplicationController
     @league = League.find(params[:league_id])
     @championship = Championship.find(params[:id])
     @championship.destroy
-    redirect_to league_path(@league)
+    redirect_to league_history_path(@league)
   end
 
   private
