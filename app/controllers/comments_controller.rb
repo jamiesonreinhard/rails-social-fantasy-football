@@ -1,4 +1,16 @@
 class CommentsController < ApplicationController
+
+  def like
+    @user = current_user
+    @comment = Comment.find(params[:comment_id])
+    if params[:format] == 'like'
+      @comment.liked_by @user
+    elsif params[:format] == 'unlike'
+      @comment.unliked_by @user
+    end
+    redirect_to post_path(@comment.post)
+  end
+
   def new
     @comment = Comment.new
   end

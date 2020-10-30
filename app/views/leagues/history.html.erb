@@ -1,11 +1,12 @@
 <%= render 'shared/league-nav' %>
 <div class="league-heading mb-3">
   <h1><%= @league.name %></h1>
+  <h2>League History</h2>
+  <% if @league.user_id == current_user.id %>
+    <%= link_to "Crown a Champion >>", new_league_championship_path(@league) %>
+  <% end %>
 </div>
-<h2>League History</h2>
-<% if @league.user_id == current_user.id %>
-  <%= link_to "Crown a Champion >>", new_league_championship_path(@league) %>
-<% end %>
+
 <div class="championship-grid">
   <% @league.championships.sort_by(&:year).reverse.each do |championship| %>
   <div class="championship-card">

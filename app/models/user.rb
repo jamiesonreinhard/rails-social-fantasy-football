@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_one_attached :photo
   include Gravtastic
   gravtastic
+  acts_as_voter
 end

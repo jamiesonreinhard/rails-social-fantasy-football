@@ -3,15 +3,25 @@
   align-items: flex-start;
 }
 
+.like-and-comment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .comment-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  box-shadow: 4px 4px 8px #c9f0ff;
   padding: 5px 10px;
   margin-bottom: 10px;
   background-color: rgba(24, 29, 39, 0.8);
   border-radius: 5px;
   text-align: left;
+}
+
+.comment-likes {
+  display: flex;
+  align-items: center;
 }
